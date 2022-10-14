@@ -22,6 +22,7 @@ class SectionCard extends StatelessWidget {
         tag: 'subject${subjectIndex}section$sectionIndex',
         builder: (logic) {
           return Card(
+            clipBehavior: Clip.antiAlias,
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             color: const Color(0xFF8C9F6D),
             // shape: RoundedRectangleBorder(

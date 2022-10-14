@@ -18,6 +18,7 @@ class SubjectCard extends StatelessWidget {
     return GetBuilder<SubjectCardLogic>(
         tag: 'subject$subjectIndex',
         builder: (logic) => Card(
+              clipBehavior: Clip.antiAlias,
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               color: const Color(0xFF8C9F6D),
               // shape: RoundedRectangleBorder(
@@ -40,7 +41,7 @@ class SubjectCard extends StatelessWidget {
           width: 20,
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(5, 16, 16, 16),
+          padding: const EdgeInsets.fromLTRB(5, 10, 16, 10),
           child: ElevatedButton(
             style: ButtonStyle(
                 backgroundColor:
