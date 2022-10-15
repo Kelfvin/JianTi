@@ -1,13 +1,12 @@
 import 'dart:developer';
-
 import 'package:get/get.dart';
 
-import '../../Dialogue/subject/subject_dlg.dart';
-import '../../dataClass/data_manager.dart';
+import '../../../dialogue/subject/subject_dlg.dart';
+import '../../../data_class/data_manager.dart';
 
-import '../../dataClass/subject.dart';
-import '../../pages/practice_page/practice_page_view.dart';
-import '../../pages/section_page/section_page_view.dart';
+import '../../../data_class/subject.dart';
+import '../../practice_page/practice_page_view.dart';
+import '../../section_page/section_page_view.dart';
 
 class SubjectCardLogic extends GetxController {
   final int index;
@@ -39,14 +38,16 @@ class SubjectCardLogic extends GetxController {
   }
 
   void onFaultBookReviewTap() async {
-    await Get.to(PracticePageView(subjectIndex: index, sectionIndex: -1));
+    await Get.to(PracticePageView(subjectIndex: index, sectionIndex: -1),);
     updateData();
   }
 
   Future<void> onPracticeTap() async {
-    await Get.to(SectionPageView(
-      subjectIndex: index,
-    ));
+    await Get.to(
+      SectionPageView(
+        subjectIndex: index,
+      ),
+    );
 
     updateData();
   }

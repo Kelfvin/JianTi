@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:jian_ti/dataClass/data_manager.dart';
-import 'package:jian_ti/pages/home/subject_page_view.dart';
+import 'package:jian_ti/data_class/data_manager.dart';
+import 'package:jian_ti/pages/subject_page/subject_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -58,7 +58,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'jian_ti',
+    
+      title: '简题',
       theme: ThemeData(primarySwatch: Colors.brown, useMaterial3: true),
       home: const SubjectPageView(),
       // _buildView(),

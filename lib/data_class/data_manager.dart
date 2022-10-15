@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 // ignore: depend_on_referenced_packages
 import 'package:file_picker/file_picker.dart';
 
-import '../pages/home/subject_page_logic.dart';
+import '../pages/subject_page/subject_page_logic.dart';
 import 'subject.dart';
 
 import 'package:get/get.dart';

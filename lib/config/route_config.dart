@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../pages/home/subject_page_view.dart';
+import '../pages/subject_page/subject_page_view.dart';
 class RouteConfig {
   static const String home = '/';
   static const String sectionPage = '/sectionPage';

@@ -72,7 +72,7 @@ class PracticePageView extends StatelessWidget {
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(),
             const Text(
-              'Ops!!!',
+              'Oops!!!',
               style: TextStyle(fontSize: 20, color: Colors.white),
             ),
             Text('你的答案是：${logic.getSelectedResult()}',

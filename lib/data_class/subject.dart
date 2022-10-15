@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:jian_ti/dataClass/fault_book.dart';
+import 'package:jian_ti/data_class/fault_book.dart';
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
-import 'package:jian_ti/dataClass/section.dart';
+import 'package:jian_ti/data_class/section.dart';
 
 
 class Subject {

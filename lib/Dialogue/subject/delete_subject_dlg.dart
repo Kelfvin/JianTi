@@ -1,8 +1,8 @@
-import 'package:jian_ti/dataClass/data_manager.dart';
+import 'package:jian_ti/data_class/data_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../pages/home/subject_page_logic.dart';
+import '../../pages/subject_page/subject_page_logic.dart';
 
 Future<void> deleteSubjectDLG(context, int subjectIndex) async {
   bool? result = await showDialog(

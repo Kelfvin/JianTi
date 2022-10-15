@@ -3,13 +3,20 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../common/assets_manage.dart';
 import '../../config/theme.dart';
-import 'aboutPageCard.dart';
+import 'about_page_card.dart';
+import 'package:get/get.dart';
+import 'about_page_logic.dart';
 
+// ignore: must_be_immutable
 class AboutPage extends StatelessWidget {
-  const AboutPage({Key? key}) : super(key: key);
+  AboutPage({Key? key}) : super(key: key);
+  late AboutPageLogic logic;
 
   @override
   Widget build(BuildContext context) {
+    logic = Get.put(AboutPageLogic());
+    logic.getAPPVersion();
+
     return Scaffold(
         body: CustomScrollView(
       slivers: [
@@ -24,33 +31,46 @@ class AboutPage extends StatelessWidget {
   }
 
   Widget _buildDonateCard() {
-    return const SliverToBoxAdapter(
-      child: AboutPageCard(
-          imageUrl:
-              'https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80',
+    return SliverToBoxAdapter(
+      child: AboutPageCard(imageUrl: AssetsManager.donateCardImage, children: [
+        const Text(
+          '支持我',
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.white,
+          ),
+        ),
+        const Text(
+          '制作不易，如果你觉得有帮助的话可以请我喝一杯Java。',
+          maxLines: 999,
+          style: TextStyle(color: Colors.white),
+        ),
+        Row(
           children: [
-            Text(
-              '支持我',
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-              ),
-            ),
-            Text(
-              '制作不易，如果你觉得有帮助的话可以请我喝一杯Java。',
-              maxLines: 999,
-              style: TextStyle(color: Colors.white),
-            ),
-            SizedBox(height: 10)
-          ]),
+            ActionChip(
+                backgroundColor: MTheme.highLightColor,
+                onPressed: () =>
+                    launch('https://www.wolai.com/7rhsZrQW12sBC1aqASxhzQ'),
+                label: Row(
+                  children: const [
+                    // Image.asset(
+                    //   AssetsManager.githubLogo,
+                    //   height: 20,
+                    // ),
+                    Text('前往支持')
+                  ],
+                )),
+          ],
+        ),
+        const SizedBox(height: 10)
+      ]),
     );
   }
 
   SliverToBoxAdapter _buildAboutBankCard() {
     return SliverToBoxAdapter(
         child: AboutPageCard(
-            imageUrl:
-                'https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
+            imageUrl: AssetsManager.aboutBankCardIamge,
             children: [
           const Text(
             '开源和题库定制',
@@ -68,14 +88,30 @@ class AboutPage extends StatelessWidget {
             children: [
               ActionChip(
                   backgroundColor: MTheme.highLightColor,
-                  onPressed: () => launch('https://www.baidu.com'),
+                  onPressed: () => launch('https://github.com/Kelfvin/JianTi'),
                   label: Row(
-                    children: [
-                      Image.asset(
-                        AssetsManager.githubLogo,
-                        height: 20,
-                      ),
-                      const Text('Json题库')
+                    children: const [
+                      // Image.asset(
+                      //   AssetsManager.githubLogo,
+                      //   height: 20,
+                      // ),
+                      Text('GitHub仓库')
+                    ],
+                  )),
+              const SizedBox(
+                width: 10,
+              ),
+              ActionChip(
+                  backgroundColor: MTheme.highLightColor,
+                  onPressed: () =>
+                      launch('https://www.wolai.com/avRdgjLxxQ5eLbMabKiMAh'),
+                  label: Row(
+                    children: const [
+                      // Image.asset(
+                      //   AssetsManager.githubLogo,
+                      //   height: 20,
+                      // ),
+                      Text('帮助文档')
                     ],
                   ))
             ],
@@ -84,26 +120,26 @@ class AboutPage extends StatelessWidget {
         ]));
   }
 
-  SliverToBoxAdapter _buildVersionCard() {
-    return const SliverToBoxAdapter(
-      child: AboutPageCard(
-          imageUrl:
-              'https://images.unsplash.com/photo-1483794344563-d27a8d18014e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
-          children: [
-            Text(
-              '简题-版本',
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-              ),
+  Widget _buildVersionCard() {
+    return GetBuilder<AboutPageLogic>(builder: (logic) {
+      return SliverToBoxAdapter(
+        child:
+            AboutPageCard(imageUrl: AssetsManager.versionCardImage, children: [
+          const Text(
+            '简题-版本',
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.white,
             ),
-            Text(
-              'Version 0.0.1',
-              style: TextStyle(color: Colors.white),
-            ),
-            Text('希望这个APP可以帮助到大家', style: TextStyle(color: Colors.white)),
-            SizedBox(height: 10)
-          ]),
-    );
+          ),
+          Text(
+            'Version ${logic.version}',
+            style: const TextStyle(color: Colors.white),
+          ),
+          const Text('希望这个APP可以帮助到大家', style: TextStyle(color: Colors.white)),
+          const SizedBox(height: 10)
+        ]),
+      );
+    });
   }
 }

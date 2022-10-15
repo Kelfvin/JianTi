@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../../dataClass/data_manager.dart';
-import '../../dataClass/subject.dart';
+import '../../data_class/data_manager.dart';
+import '../../data_class/subject.dart';
 
 class SectionPageLogic extends GetxController {
   final int subjectIndex;

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jian_ti">
+    package="com.kelf.jian_ti">
    <application
-        android:label="jian_ti"
+        android:label="简题"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

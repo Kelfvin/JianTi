@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 import '../../config/theme.dart';
 
@@ -23,7 +22,7 @@ class AboutPageCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
+            Image.asset(
               imageUrl,
               fit: BoxFit.cover,
               height: 120,

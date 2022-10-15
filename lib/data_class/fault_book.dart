@@ -1,6 +1,6 @@
-import 'package:jian_ti/dataClass/data_manager.dart';
-import 'package:jian_ti/dataClass/problem.dart';
-import 'package:jian_ti/dataClass/section.dart';
+import 'package:jian_ti/data_class/data_manager.dart';
+import 'package:jian_ti/data_class/problem.dart';
+import 'package:jian_ti/data_class/section.dart';
 
 class FaultBook {
   List<Problem> wrongProblems;

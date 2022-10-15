@@ -1,4 +1,4 @@
-import 'package:jian_ti/dataClass/data_manager.dart';
+import 'package:jian_ti/data_class/data_manager.dart';
 import 'package:flutter/material.dart';
 
 Future<void> cleanSubjectProgressDLG(context, int subjectIndex) async {

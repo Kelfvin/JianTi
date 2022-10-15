@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../config/theme.dart';
-import '../../widget/section_card/section_card_view.dart';
+import 'section_card/section_card_view.dart';
+import '../practice_page/practice_page_view.dart';
 import 'section_page_logic.dart';
 
 // ignore: must_be_immutable
@@ -18,8 +19,11 @@ class SectionPageView extends StatelessWidget {
       body: GetBuilder<SectionPageLogic>(builder: (logic) => _buildBody()),
       floatingActionButton: FloatingActionButton(
         backgroundColor: MTheme.highLightColor,
-        child: const Icon(Icons.add),
-        onPressed: () {},
+        child: const Icon(Icons.build),
+        onPressed: () => Get.to(PracticePageView(
+          subjectIndex: subjectIndex,
+          sectionIndex: -1,
+        )),
       ),
       backgroundColor: MTheme.baseColor,
     );

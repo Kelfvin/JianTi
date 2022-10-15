@@ -2,12 +2,12 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 
-import '../../Dialogue/section/section_dlg.dart';
-import '../../dataClass/data_manager.dart';
-import '../../dataClass/section.dart';
+import '../../../dialogue/section/section_dlg.dart';
+import '../../../data_class/data_manager.dart';
+import '../../../data_class/section.dart';
 
-import '../../dataClass/subject.dart';
-import '../../pages/practice_page/practice_page_view.dart';
+import '../../../data_class/subject.dart';
+import '../../practice_page/practice_page_view.dart';
 
 class SectionCardLogic extends GetxController {
   final int subjectIndex;
@@ -40,10 +40,11 @@ class SectionCardLogic extends GetxController {
   }
 
   Future<void> onPracticeTap() async {
-    await Get.to(PracticePageView(
-      sectionIndex: sectionIndex,
-      subjectIndex: subjectIndex,
-    ));
+    await Get.to(
+        PracticePageView(
+          sectionIndex: sectionIndex,
+          subjectIndex: subjectIndex,
+        ),);
 
     updateData();
   }

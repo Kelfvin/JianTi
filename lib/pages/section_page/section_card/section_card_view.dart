@@ -29,6 +29,7 @@ class SectionCard extends StatelessWidget {
             //     borderRadius: BorderRadius.all(Radius.circular(30))),
             child: InkWell(
                 onLongPress: () => logic.onCardLongTap(context),
+                onTap: ()=>logic.onPracticeTap(),
                 child: Column(
                   children: [
                     sectionInfo(),

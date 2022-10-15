@@ -1,6 +1,6 @@
-import 'package:jian_ti/Dialogue/section/clean_section_progress_dlg.dart';
-import 'package:jian_ti/Dialogue/section/delete_section_dlg.dart';
-import 'package:jian_ti/dataClass/data_manager.dart';
+import 'package:jian_ti/dialogue/section/clean_section_progress_dlg.dart';
+import 'package:jian_ti/dialogue/section/delete_section_dlg.dart';
+import 'package:jian_ti/data_class/data_manager.dart';
 import 'package:flutter/material.dart';
 
 Future <void> sectionDLG(context, int subjectIndex, int sectionIndex) async {

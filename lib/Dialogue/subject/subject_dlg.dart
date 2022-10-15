@@ -1,9 +1,9 @@
-import 'package:jian_ti/Dialogue/subject/clean_subject_fault_book_dlg.dart';
-import 'package:jian_ti/Dialogue/subject/clean_subject_progress_dlg.dart';
-import 'package:jian_ti/Dialogue/subject/delete_subject_dlg.dart';
+import 'package:jian_ti/dialogue/subject/clean_subject_fault_book_dlg.dart';
+import 'package:jian_ti/dialogue/subject/clean_subject_progress_dlg.dart';
+import 'package:jian_ti/dialogue/subject/delete_subject_dlg.dart';
 import 'package:flutter/material.dart';
 
-import '../../dataClass/data_manager.dart';
+import '../../data_class/data_manager.dart';
 
 Future<void> subjectDLG(context, int subjectIndex) async {
   var subject = DataManager.subjects[subjectIndex];

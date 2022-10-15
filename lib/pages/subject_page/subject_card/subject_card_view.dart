@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jian_ti/widget/subject_card/subject_card_logic.dart';
+import 'package:jian_ti/pages/subject_page/subject_card/subject_card_logic.dart';
 
 // ignore: must_be_immutable
 class SubjectCard extends StatelessWidget {
@@ -24,6 +24,7 @@ class SubjectCard extends StatelessWidget {
               // shape: RoundedRectangleBorder(
               //     borderRadius: BorderRadius.all(Radius.circular(30))),
               child: InkWell(
+                onTap: ()=>logic.onPracticeTap(),
                   onLongPress: () => logic.onCardLongTap(context),
                   child: Column(
                     children: [

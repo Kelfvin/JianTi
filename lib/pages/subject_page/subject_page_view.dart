@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../dataClass/data_manager.dart';
+import '../../data_class/data_manager.dart';
 import '../../config/theme.dart';
-import '../../widget/subject_card/subject_card_view.dart';
-import '../about/about_page.dart';
+import 'subject_card/subject_card_view.dart';
 import 'subject_page_logic.dart';
 import 'package:get/get.dart';
 
@@ -36,7 +35,7 @@ class _SubjectPageViewState extends State<SubjectPageView> {
     silvers.add(SliverAppBar.large(
       leading: IconButton(
         icon: const Icon(Icons.menu),
-        onPressed: ()=>Get.to(const AboutPage()),
+        onPressed: ()=>logic.onAboutTap(),
       ),
       title: const Text('简题'),
       actions: [IconButton(onPressed: ()=>logic.onImportTap(), icon: const Icon(Icons.add))],
