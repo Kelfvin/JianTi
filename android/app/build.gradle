@@ -65,7 +65,7 @@ android {
         }
 
 
-        archivesBaseName = "简题$versionName"
+        archivesBaseName = "JianTi_$versionName"
 
     }
 
