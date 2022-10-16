@@ -51,3 +51,5 @@ gradle-wrapper.jar
 /local.properties
 GeneratedPluginRegistrant.java
 /android/key.properties
+
+.VSCodeCounter
