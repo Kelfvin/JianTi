@@ -1,10 +1,11 @@
 import 'dart:io';
 
-import 'package:jian_ti/data_class/data_manager.dart';
+import 'package:jian_ti/pages/privacy_page.dart';
 import 'package:jian_ti/pages/subject_page/subject_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'main_logic.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,16 +30,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  late MainLogic logic;
+
   @override
   void initState() {
-    ///初始化题库
-    _initData();
-    super.initState();
-  }
+    logic = Get.put<MainLogic>(MainLogic());
+    logic.checkUsrAcceptPrivacy();
 
-  void _initData() async {
-    await DataManager.loadData();
-    setState(() {});
+    super.initState();
   }
 
   // Widget _buildBottomNavigator() {
@@ -58,12 +57,19 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-    
       title: '简题',
       theme: ThemeData(primarySwatch: Colors.brown, useMaterial3: true),
-      home: const SubjectPageView(),
+      home: GetBuilder<MainLogic>(builder: (logic) => _buildHome()),
       // _buildView(),
       debugShowCheckedModeBanner: false,
     );
+  }
+
+  Widget _buildHome() {
+    // return PrivacyPage();
+
+    return logic.isAcceptPrivacy
+        ? const SubjectPageView()
+        : PrivacyPage();
   }
 }

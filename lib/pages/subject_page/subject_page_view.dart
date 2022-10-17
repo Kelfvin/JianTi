@@ -17,9 +17,16 @@ class _SubjectPageViewState extends State<SubjectPageView> {
   late SubjectPageLogic logic;
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     logic = Get.put(SubjectPageLogic());
+    super.initState();
+    ///初始化题库
+    _initData();
+  }
 
+  @override
+  Widget build(BuildContext context) {
+    
     return Scaffold(
       body: GetBuilder<SubjectPageLogic>(builder: (logic) => _buildBody()),
       // floatingActionButton: FloatingActionButton(
@@ -55,5 +62,10 @@ class _SubjectPageViewState extends State<SubjectPageView> {
         slivers: silvers,
       ),
     );
+  }
+
+    void _initData() async {
+    await DataManager.loadData();
+    setState(() {});
   }
 }

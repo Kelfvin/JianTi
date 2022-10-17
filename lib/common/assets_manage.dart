@@ -7,6 +7,8 @@ class AssetsManager {
   static const String versionCardImage = 'assets/image/version_card.jpg';
 
   static const String donateCardImage = 'assets/image/donate_card.jpg';
+  static const String startImage = 'assets/image/start.jpg';
+
 
 
 }

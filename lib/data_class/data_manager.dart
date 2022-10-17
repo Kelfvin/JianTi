@@ -96,7 +96,7 @@ class DataManager {
       }
     }
 
-  Get.find<SubjectPageLogic>().update();
+    Get.find<SubjectPageLogic>().update();
 
     return true;
   }
