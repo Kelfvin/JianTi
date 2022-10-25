@@ -7,11 +7,10 @@ import 'package:jian_ti/pages/subject_page/subject_page_view.dart';
 import '../common/assets_manage.dart';
 import '../config/theme.dart';
 import '../data_class/data_manager.dart';
-import '../main_logic.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PrivacyPage extends StatefulWidget {
-  PrivacyPage({super.key});
+  const PrivacyPage({super.key});
 
   @override
   State<PrivacyPage> createState() => _PrivacyPageState();
@@ -74,7 +73,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
                     const TextSpan(text: '根据相关法律法规要求，我们更新完善了'),
                     TextSpan(
                         text: '《用户协议》',
-                        style: TextStyle(color: MTheme.middleColor),
+                        style: const TextStyle(color: MTheme.middleColor),
                         recognizer: _termsAndConditionRecognizer
                           ..onTap = () {
                             launch(
