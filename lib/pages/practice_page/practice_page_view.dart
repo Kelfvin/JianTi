@@ -132,15 +132,18 @@ class PracticePageView extends StatelessWidget {
     );
   }
 
-  Row _buildInfoBar() {
-    return Row(
-      children: [
-        buildChip(logic.subject.name),
-        buildChip(logic.section.name ?? 'Null'),
-        buildChip(
-            '${logic.section.progress}/${logic.section.problems?.length}'),
-        buildChip(logic.problem?.type ?? 'Null')
-      ],
+  Widget _buildInfoBar() {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal, // 设置滚动方向为水平
+      child: Row(
+        children: [
+          buildChip(logic.subject.name),
+          buildChip(logic.section.name ?? 'Null'),
+          buildChip(
+              '${logic.section.progress}/${logic.section.problems?.length}'),
+          buildChip(logic.problem?.type ?? 'Null')
+        ],
+      ),
     );
   }
 

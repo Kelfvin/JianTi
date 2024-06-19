@@ -36,6 +36,7 @@ dependencies:
   shared_preferences: ^2.0.15
   file_picker: ^8.0.5
   fluttertoast: ^8.0.9
+  chinese_font_library: ^1.2.0
   
   flutter_launcher_icons: ^0.13.1
 

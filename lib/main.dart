@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:chinese_font_library/chinese_font_library.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -59,7 +60,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: '简题',
-      theme: ThemeData(primarySwatch: Colors.brown, useMaterial3: true),
+      theme: ThemeData(primarySwatch: Colors.brown, useMaterial3: true)
+          .useSystemChineseFont(Brightness.light),
       home: GetBuilder<MainLogic>(builder: (logic) => _buildHome()),
       // _buildView(),
       debugShowCheckedModeBanner: false,

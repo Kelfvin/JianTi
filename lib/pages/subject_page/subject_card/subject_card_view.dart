@@ -24,7 +24,7 @@ class SubjectCard extends StatelessWidget {
               // shape: RoundedRectangleBorder(
               //     borderRadius: BorderRadius.all(Radius.circular(30))),
               child: InkWell(
-                onTap: ()=>logic.onPracticeTap(),
+                  onTap: () => logic.onPracticeTap(),
                   onLongPress: () => logic.onCardLongTap(context),
                   child: Column(
                     children: [
@@ -46,7 +46,7 @@ class SubjectCard extends StatelessWidget {
           child: ElevatedButton(
             style: ButtonStyle(
                 backgroundColor:
-                    MaterialStateProperty.all(const Color(0xFF506F38))),
+                    WidgetStateProperty.all(const Color(0xFF506F38))),
             onPressed: () => logic.onPracticeTap(),
             child: const Text(
               '章节',
@@ -61,7 +61,7 @@ class SubjectCard extends StatelessWidget {
             onPressed: () => logic.onFaultBookReviewTap(),
             style: ButtonStyle(
                 backgroundColor:
-                    MaterialStateProperty.all(const Color(0xFF506F38))),
+                    WidgetStateProperty.all(const Color(0xFF506F38))),
             child: const Text(
               '错题',
               style: TextStyle(color: Colors.white),
@@ -72,22 +72,21 @@ class SubjectCard extends StatelessWidget {
     );
   }
 
-  Row subjectInfo() {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 16, 0, 0),
-          child: Text(
-            logic.name,
-            style: const TextStyle(fontSize: 25, color: Colors.white),
+  Widget subjectInfo() {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Text(
+              logic.name,
+              style: const TextStyle(fontSize: 25, color: Colors.white),
+            ),
           ),
-        ),
-        Expanded(child: Container()),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-          child: subjectProgress(),
-        )
-      ],
+          subjectProgress(),
+        ],
+      ),
     );
   }
 
