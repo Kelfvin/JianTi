@@ -1,10 +1,11 @@
 import 'dart:io';
 
-import 'package:jian_ti/pages/privacy_page.dart';
-import 'package:jian_ti/pages/subject_page/subject_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:jian_ti/pages/privacy_page.dart';
+import 'package:jian_ti/pages/subject_page/subject_page_view.dart';
+
 import 'main_logic.dart';
 
 void main() {
@@ -70,6 +71,6 @@ class _MyAppState extends State<MyApp> {
 
     return logic.isAcceptPrivacy
         ? const SubjectPageView()
-        : PrivacyPage();
+        : const PrivacyPage();
   }
 }

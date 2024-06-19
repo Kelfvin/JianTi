@@ -1,6 +1,6 @@
-import 'package:jian_ti/pages/practice_page/practice_page_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jian_ti/pages/practice_page/practice_page_logic.dart';
 
 import '../../config/theme.dart';
 
@@ -33,7 +33,7 @@ class PracticePageView extends StatelessWidget {
     if (logic.problem == null) {
       return null;
     }
-    
+
     if (logic.problem!.type != '多选题') {
       return null;
     }
@@ -50,13 +50,15 @@ class PracticePageView extends StatelessWidget {
         child: Text('题目已经全部做完了！'),
       );
     } else {
-      return Column(
-        children: [
-          _buildInfoBar(),
-          _buildProblemTitle(),
-          _buildShowASWWidget(logic),
-          _buldOptionsView()
-        ],
+      return SingleChildScrollView(
+        child: Column(
+          children: [
+            _buildInfoBar(),
+            _buildProblemTitle(),
+            _buildShowASWWidget(logic),
+            _buldOptionsView()
+          ],
+        ),
       );
     }
   }
@@ -70,7 +72,6 @@ class PracticePageView extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Row(),
             const Text(
               'Oops!!!',
               style: TextStyle(fontSize: 20, color: Colors.white),
@@ -78,6 +79,8 @@ class PracticePageView extends StatelessWidget {
             Text('你的答案是：${logic.getSelectedResult()}',
                 style: const TextStyle(color: Colors.white)),
             Text('正确答案是：${logic.problem?.key ?? 'Null'},已经为您加入错题本！',
+                style: const TextStyle(color: Colors.white)),
+            Text('参考解析是：${logic.problem?.hint ?? '没有提示！'}',
                 style: const TextStyle(color: Colors.white))
           ]),
         ),
