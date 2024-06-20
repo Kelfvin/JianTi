@@ -8,17 +8,19 @@ class Problem {
   final String key;
   final String type;
   final List<String> options;
+  final String hint; // 新增字段，用于提供提示
 
   // 用于错题本里面的错题，普通题目无意义
   int neededDoneTime;
 
-  Problem(
-      {required this.title,
-      required this.key,
-      required this.type,
-      required this.options,
-      this.neededDoneTime = 0
-      });
+  Problem({
+    required this.title,
+    required this.key,
+    required this.type,
+    required this.options,
+    this.neededDoneTime = 0,
+    this.hint = '', // 默认值为空字符串
+  });
 
   static String standarlizeTitle(Map<String, dynamic> data) {
     return data['title'].trim();
@@ -62,7 +64,8 @@ class Problem {
       key: standarlizeKey(data),
       type: standarlizeType(data),
       options: standarlizeOptions(data),
-      neededDoneTime: data['neededDoneTime']??0
+      neededDoneTime: data['neededDoneTime'] ?? 0,
+      hint: data['hint'] ?? '', // 处理新字段
     );
 
     return problem;
@@ -73,7 +76,8 @@ class Problem {
         'key': key,
         'type': type,
         'options': options,
-        'neededDoneTime':neededDoneTime
+        'neededDoneTime': neededDoneTime,
+        'hint': hint, // 包含新字段
       };
 
   /// `dart:convert`

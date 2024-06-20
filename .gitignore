@@ -53,3 +53,5 @@ GeneratedPluginRegistrant.java
 /android/key.properties
 
 .VSCodeCounter
+windows/.vs/
+windows/out/

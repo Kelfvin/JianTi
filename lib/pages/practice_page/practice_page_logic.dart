@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../data_class/data_manager.dart';
@@ -16,7 +17,6 @@ class PracticePageLogic extends GetxController {
   PracticePageLogic(int subjectIndex, int sectionIndex) {
     subject = DataManager.subjects[subjectIndex];
 
-
     if (sectionIndex < 0) {
       section = subject.faultBook.toSection(subjectIndex);
     } else {
@@ -33,6 +33,47 @@ class PracticePageLogic extends GetxController {
     if (index == 0) {
       backPre();
     } else if (index == 1) {
+      // 全局查看 功能没做
+      Get.bottomSheet(
+        Container(
+          padding: const EdgeInsets.all(15),
+          color: Colors.white,
+          height: Get.height * 0.618,
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 6, // 每行个数
+              childAspectRatio: 1.0, // 宽高比为 1，使其成为正方形
+            ),
+            itemCount: section.problems!.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                margin: const EdgeInsets.all(6.0), // 添加一些间隔
+                decoration: BoxDecoration(
+                  color: Colors.green, // 背景
+                  // todo 全局背景色
+                  // 白色 未做
+                  // 绿色 做对
+                  // 红色 做错
+                  borderRadius: BorderRadius.circular(10.0), // 圆角的大小
+                  shape: BoxShape.rectangle, // 方形
+                ),
+                child: Center(
+                  child: InkWell(
+                    child: Text(
+                      '${index + 1}',
+                      style: const TextStyle(color: Colors.white), // 白色文字
+                    ),
+                    onTap: () {
+                      jumpToIndex(index);
+                    },
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        isScrollControlled: true,
+      );
     } else if (index == 2) {
       showASW();
       subject.faultBook.addWrongQuestion(problem);
@@ -92,6 +133,12 @@ class PracticePageLogic extends GetxController {
       DataManager.storeData();
       update();
     }
+  }
+
+  void jumpToIndex(int index) {
+    section.progress = index;
+    changeToNext();
+    Get.back();
   }
 
   /// 返回上一道题目
