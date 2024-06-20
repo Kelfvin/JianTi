@@ -1,31 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:jian_ti/pages/practice_page/practice_page_logic.dart';
 
 import '../../config/theme.dart';
 
 // ignore: must_be_immutable
-class PracticePageView extends StatelessWidget {
+class PracticePageView extends StatefulWidget {
+  int subjectIndex;
+  int sectionIndex;
   PracticePageView(
       {super.key, required this.subjectIndex, required this.sectionIndex});
 
-  int subjectIndex;
-  int sectionIndex;
+  @override
+  State<PracticePageView> createState() => _PracticePageViewState();
+}
 
+class _PracticePageViewState extends State<PracticePageView> {
   late PracticePageLogic logic;
+  DateTime _lastKeyEventTime = DateTime.now();
+  KeyEventResult _handleKeyEvent(FocusNode node, KeyEvent event) {
+    final currentTime = DateTime.now();
+    // 检查时间差是否大于300毫秒
+    if (currentTime.difference(_lastKeyEventTime) >
+        const Duration(milliseconds: 300)) {
+      // 更新上次事件处理的时间
+      _lastKeyEventTime = currentTime;
+    } else {
+      return KeyEventResult.ignored;
+    }
+    if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+      logic.backPre();
+      // print('方向键左被按下');
+      return KeyEventResult.handled;
+    } else if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
+      // print('方向键右被按下');
+      logic.changeToNext();
+      return KeyEventResult.handled;
+    }
+
+    return KeyEventResult.ignored;
+  }
 
   @override
   Widget build(BuildContext context) {
     logic = Get.put<PracticePageLogic>(
-        PracticePageLogic(subjectIndex, sectionIndex));
+        PracticePageLogic(widget.subjectIndex, widget.sectionIndex));
+    double startX = 0;
     return GetBuilder<PracticePageLogic>(
-        builder: (logic) => Scaffold(
+      builder: (logic) => GestureDetector(
+          onHorizontalDragStart: (DragStartDetails details) {
+            startX = details.globalPosition.dx;
+          },
+          onHorizontalDragEnd: (DragEndDetails details) {
+            double currentX = details.globalPosition.dx;
+            double distance = currentX - startX;
+            // 当滑动距离超过100逻辑像素时，确认为有效滑动
+            if (distance.abs() > 100) {
+              if (distance > 0) {
+                // 用户向右滑动超过100逻辑像素
+                logic.backPre();
+              } else {
+                // 用户向左滑动超过100逻辑像素
+                logic.changeToNext();
+              }
+            }
+          },
+          child: Focus(
+            autofocus: true,
+            onKeyEvent: _handleKeyEvent,
+            child: Scaffold(
               appBar: AppBar(),
               body: _buildBody(logic),
               backgroundColor: MTheme.baseColor,
               bottomNavigationBar: _buildBottomNavigationBar(),
               floatingActionButton: _buildConfirmFloatButtom(),
-            ));
+            ),
+          )),
+    );
   }
 
   /// 创建多选题的确定按钮

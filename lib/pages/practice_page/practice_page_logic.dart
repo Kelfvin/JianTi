@@ -58,9 +58,14 @@ class PracticePageLogic extends GetxController {
                   shape: BoxShape.rectangle, // 方形
                 ),
                 child: Center(
-                  child: Text(
-                    '${index + 1}',
-                    style: const TextStyle(color: Colors.white), // 白色文字
+                  child: InkWell(
+                    child: Text(
+                      '${index + 1}',
+                      style: const TextStyle(color: Colors.white), // 白色文字
+                    ),
+                    onTap: () {
+                      jumpToIndex(index);
+                    },
                   ),
                 ),
               );
@@ -128,6 +133,12 @@ class PracticePageLogic extends GetxController {
       DataManager.storeData();
       update();
     }
+  }
+
+  void jumpToIndex(int index) {
+    section.progress = index;
+    changeToNext();
+    Get.back();
   }
 
   /// 返回上一道题目
